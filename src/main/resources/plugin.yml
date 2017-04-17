@@ -1,0 +1,11 @@
+name: warpChest
+main: net.ksm.mcp.Main
+version: 1.0-SNAPSHOT
+author: K0SM0
+description: TODO
+depend: [Essentials]
+
+commands:
+  teleporty:
+    description: Your description
+    usage: /teleporty

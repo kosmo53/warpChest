@@ -1,0 +1,10 @@
+guiName: 'Teleporty'
+enableDebug: true
+warps:
+ a:
+  lore:
+   -
+   -
+   -
+   Material: GLass / 16
+   Enchanted: true
