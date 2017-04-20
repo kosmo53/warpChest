@@ -23,10 +23,4 @@ public class BukkitFacade {
         return new ArrayList<String>(this.essentials.getWarps().getList());
     }
 
-    public void displayWarps(){
-        for (String warp : getWarps()) {
-            System.out.println("[WarpChest] - Warp " + warp);
-        }
-    }
-
 }

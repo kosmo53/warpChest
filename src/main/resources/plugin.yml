@@ -6,6 +6,7 @@ description: TODO
 depend: [Essentials]
 
 commands:
-  teleporty:
-    description: Your description
-    usage: /teleporty
+  warpchest:
+    description: Otwiera skrzynię z warpami
+    usage: /warpchest
+    aliases: [warpc, wc, wchest]

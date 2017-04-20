@@ -12,9 +12,7 @@ public class FileManager {
     private static YamlConfiguration msg;
     private final JavaPlugin main;
 
-    FileManager(JavaPlugin main) {
-        this.main = main;
-    }
+    FileManager(JavaPlugin main) {this.main = main;}
     
     private Logger getLogger(){
         return main.getLogger();
@@ -30,11 +28,6 @@ public class FileManager {
         if (!configFile.exists()) {
             getLogger().info("Creating config.yml");
             main.saveDefaultConfig();
-        }
-        File messagesFile = new File(dataFolder, "messages.yml");
-        if (!messagesFile.exists()) {
-            getLogger().info("Creating messages.yml");
-            main.saveResource("messages.yml", true);
         }
         getLogger().info("Loading configs intro local plugin config");
         main.reloadConfig();

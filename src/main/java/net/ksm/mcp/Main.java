@@ -12,7 +12,7 @@ public class Main extends JavaPlugin {
     }
 
     public void onEnable() {
-        getLogger().info("[WarpChest] Plugin by. K0SM053");
+        getLogger().info("Plugin by. K0SM053 - https://github.com/kosmo53");
         fileManager.initConfigFileStructure();
 
         BukkitFacade bukkitFacade = new BukkitFacade();
@@ -28,9 +28,6 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(playerListener, this);
         getServer().getPluginManager().registerEvents(compassListener, this);
 
-        getCommand("teleporty").setExecutor(new CmdExec(warpPhoneBook, config));
-
-
-        getLogger().info("[WarpChest] Loaded warps count: " + bukkitFacade.getWarpCount());
+        getCommand("warpchest").setExecutor(new CmdExec(warpPhoneBook, config));
     }
 }
