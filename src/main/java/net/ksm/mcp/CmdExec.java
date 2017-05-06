@@ -31,11 +31,11 @@ public class CmdExec implements CommandExecutor {
                     p.sendMessage(ChatColor.GRAY + "/warpchest");
 
                 }
-                if (p.hasPermission("warpchest.set.item")) {
-                    p.sendMessage(ChatColor.GRAY + "/warpchest set item [warp] [itemMaterial]");
-                }
                 if (p.hasPermission("warpchest.set.enchanted")) {
                     p.sendMessage(ChatColor.GRAY + "/warpchest set enchanted [warp] [true/false]");
+                }
+                if (p.hasPermission("warpchest.set.item")) {
+                    p.sendMessage(ChatColor.GRAY + "/warpchest set item [warp] [itemMaterial]");
                 }
                 if (p.hasPermission("warpchest.set.lore")) {
                     p.sendMessage(ChatColor.GRAY + "/warpchest set lore [warp] [line] [text]");
