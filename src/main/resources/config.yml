@@ -1,5 +1,19 @@
-guiName: 'Teleporty'
+guiName: 'Teleports'
 enableDebug: true
-itemNums: false
-
+itemNums: true
 Items:
+  example:
+    item: GLOWSTONE
+    enchanted: true
+    visible: true
+    name: '&5&lExAmPlE'
+    lore:
+      - '&f&k--------'
+      - '&f--------'
+      - '&f| &6Example'
+      - '&f| &aof'
+      - '&f| &b&othe'
+      - '&f| &citem'
+      - '&f| &dl&fo&ar&b&r&d&oe'
+      - '&f--------'
+      - '&f&k--------'

@@ -1,5 +1,6 @@
 package net.ksm.mcp;
 
+import com.earth2me.essentials.Essentials;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -18,13 +19,15 @@ public class PlayerListener implements Listener {
 
     private final WarpPhoneBook warpPhoneBook;
     private final FileConfiguration config;
+    private final Essentials es;
 
     PlayerListener(WarpPhoneBook warpPhoneBook, FileConfiguration fileConfiguration) {
         this.warpPhoneBook = warpPhoneBook;
         this.config = fileConfiguration;
+        this.es = (Essentials) Bukkit.getPluginManager().getPlugin("Essentials");
     }
 
-    private void tpp(Player p, String w) {
+    private void teleportPlayer(Player p, String w) {
         ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
         String command = "warp" + " " + w + " " + p.getName();
 
@@ -37,9 +40,9 @@ public class PlayerListener implements Listener {
             return;
         Player player = (Player) event.getWhoClicked();
         event.setCancelled(true);
-        String nam = event.getCurrentItem().getItemMeta().getDisplayName();
-        tpp(player, nam);
-
+        String nam = event.getCurrentItem().getItemMeta().getLocalizedName();
+        player.performCommand("warp " + nam);
+        player.closeInventory();
     }
 
     @EventHandler
@@ -51,6 +54,7 @@ public class PlayerListener implements Listener {
             return;
         if (is.getType() == Material.COMPASS && is.getItemMeta().getDisplayName().equalsIgnoreCase("Teleporty")) {
             ev.getPlayer().openInventory(warpPhoneBook.getInventory());
+
         }
 
 

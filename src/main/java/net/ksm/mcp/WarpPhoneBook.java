@@ -35,33 +35,34 @@ class WarpPhoneBook {
         for (int i = 0; i < warpList.size(); i++) {
             String warp = warpList.get(i);
             String itemID = "PAPER";
+            String name = warp;
             Boolean enchant = false;
             Boolean lore = false;
-            if (config.getString("Items." + warp + ".item") == null) {
-            } else {
+            if (config.getString("Items." + warp + ".item") != null) {
                 itemID = config.getString("Items." + warp + ".item");
             }
-            if (config.getString("Items." + warp + ".enchanted") == null) {
-            } else {
+            if (config.getString("Items." + warp + ".name") != null) {
+                name = config.getString("Items." + warp + ".name");
+            }
+            if (config.getString("Items." + warp + ".enchanted") != null) {
                 enchant = config.getBoolean("Items." + warp + ".enchanted");
             }
-            if (config.getList("Items." + warp + ".lore") == null) {
-            } else {
+            if (config.getList("Items." + warp + ".lore") != null) {
                 lore = true;
             }
             if (config.getString("Items." + warp + ".visible") == null || config.getBoolean("Items." + warp + ".visible")) {
-                setWarpItem(warp, i - skippedWarps, inventory, itemID, enchant, lore);
+                setWarpItem(warp, i - skippedWarps, inventory, itemID, enchant, lore, name);
             } else {
                 skippedWarps = skippedWarps + 1;
             }
         }
     }
-    private void setWarpItem(String warpName, Integer warpIndex, Inventory i, String ID, Boolean enchanted, Boolean lore) {
+    private void setWarpItem(String warp, Integer warpIndex, Inventory i, String ID, Boolean enchanted, Boolean lore, String name) {
         ItemStack item = new ItemStack(Material.getMaterial(ID));
         ItemMeta itemmeta = item.getItemMeta();
         if (lore){
             ArrayList<String> lore2 = new ArrayList<String>();
-            List<String> lorelist = config.getStringList("Items." + warpName + ".lore");
+            List<String> lorelist = config.getStringList("Items." + warp + ".lore");
             for(String s : lorelist){
                 lore2.add(ChatColor.translateAlternateColorCodes('&', s));
             }
@@ -71,14 +72,14 @@ class WarpPhoneBook {
             itemmeta.addEnchant(Enchantment.THORNS, 10, true);
             itemmeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         }
-        itemmeta.setDisplayName(warpName);
+        itemmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
+        itemmeta.setLocalizedName(warp);
         item.setItemMeta(itemmeta);
         if (config.getBoolean("itemNums")){
         item.setAmount(warpIndex + 1);}
         i.setItem(warpIndex, item);
     }
-    void open(Player player) {
-player.openInventory(inventory);
+    void open(Player player) {player.openInventory(inventory);
     }
     private int getWarpHeight() {
         Integer skippedWarps = 0;
