@@ -18,17 +18,17 @@ public class Main extends JavaPlugin {
         BukkitFacade bukkitFacade = new BukkitFacade();
         FileConfiguration config = getConfig();
 
-        WarpPhoneBook warpPhoneBook = new WarpPhoneBook( bukkitFacade, config);
+        WarpPhoneBook warpPhoneBook = new WarpPhoneBook(bukkitFacade, config);
 
         warpPhoneBook.initPhoneBook();
 
         PlayerListener playerListener = new PlayerListener(warpPhoneBook, config);
-        Compass compassListener = new Compass();
+        Compass compassListener = new Compass(config);
 
         getServer().getPluginManager().registerEvents(playerListener, this);
         getServer().getPluginManager().registerEvents(compassListener, this);
 
-        getCommand("warpchest").setExecutor(new CmdExec(warpPhoneBook, config));
+        getCommand("warpchest").setExecutor(new CmdExec(warpPhoneBook, config, bukkitFacade, config));
     }
 
 

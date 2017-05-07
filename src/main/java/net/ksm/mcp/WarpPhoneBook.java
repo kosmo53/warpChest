@@ -43,6 +43,10 @@ class WarpPhoneBook {
             }
             if (config.getString("Items." + warp + ".name") != null) {
                 name = config.getString("Items." + warp + ".name");
+            } else {
+                if (config.getBoolean("replace_inNames")){
+                name = warp.replace("_", " ");}
+
             }
             if (config.getString("Items." + warp + ".enchanted") != null) {
                 enchant = config.getBoolean("Items." + warp + ".enchanted");

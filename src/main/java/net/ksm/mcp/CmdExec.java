@@ -10,9 +10,10 @@ public class CmdExec implements CommandExecutor {
     private final WarpPhoneBook warpPhoneBook;
     private final FileConfiguration config;
 
-    CmdExec(WarpPhoneBook warpPhoneBook, FileConfiguration fileConfiguration) {
+    CmdExec(WarpPhoneBook warpPhoneBook, FileConfiguration fileConfiguration, BukkitFacade bukkitFacade, FileConfiguration config) {
         this.warpPhoneBook = warpPhoneBook;
-        this.config = fileConfiguration;
+
+        this.config = config;
     }
     public boolean onCommand(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
         if (sender instanceof Player) {
@@ -20,13 +21,13 @@ public class CmdExec implements CommandExecutor {
             if (args.length < 1){
             warpPhoneBook.open(p);
             return true;}
-            if (args.length > 0 && args[0].equalsIgnoreCase("rl") || args[0].equalsIgnoreCase("reload")){
+            else if (args.length > 0 && args[0].equalsIgnoreCase("rl") || args[0].equalsIgnoreCase("reload")){
                 if(p.hasPermission("warpchest.reload")){
                     //TODO
                 }
 
             }
-            if (args.length > 0 && args[0].equalsIgnoreCase("help")){
+            else if (args.length > 0 && args[0].equalsIgnoreCase("help")){
                 if (p.hasPermission("warpchest.chest")) {
                     p.sendMessage(ChatColor.GRAY + "/warpchest");
 
@@ -48,11 +49,11 @@ public class CmdExec implements CommandExecutor {
                 }
                     p.sendMessage(ChatColor.GRAY + "/warpchest help");
             }
-            if (args.length > 1 && args[0].equalsIgnoreCase("set")){
+            if (args.length > 0 && args[0].equalsIgnoreCase("set")){
                 if(p.hasPermission("warpchest.set")){
                     if (args.length > 3 && args[1].equalsIgnoreCase("item")) {
-
-
+                        config.set("Items." + args[2] + ".item",args[3]);
+sender.sendMessage("Ustawiono item " + args[3] + " dla teleportu " + args[2]);
                     }
 
 

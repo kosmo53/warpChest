@@ -1,6 +1,8 @@
 guiName: 'Teleports'
 enableDebug: true
 itemNums: true
+compassOnJoin: true
+replace_inNames: true
 Items:
   example:
     item: GLOWSTONE
