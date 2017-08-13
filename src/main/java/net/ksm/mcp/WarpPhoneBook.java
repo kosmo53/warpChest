@@ -78,6 +78,7 @@ class WarpPhoneBook {
         }
         itemmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
         itemmeta.setLocalizedName(warp);
+        itemmeta.removeItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         item.setItemMeta(itemmeta);
         if (config.getBoolean("itemNums")){
         item.setAmount(warpIndex + 1);}

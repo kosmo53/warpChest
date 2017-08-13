@@ -10,7 +10,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <server.plugin>C:\Users\K0SM0\Desktop\Serwer\plugins</server.plugin>
+        <server.plugin>C:\Users\KSM\Desktop\Kompilator</server.plugin>
     </properties>
 
     <build>

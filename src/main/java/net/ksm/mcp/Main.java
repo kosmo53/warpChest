@@ -7,6 +7,12 @@ public class Main extends JavaPlugin {
 
     private FileManager fileManager;
 
+    public static Main inst;
+
+    public static Main getInst(){
+        return inst;
+    }
+
     public Main() {
         this.fileManager = new FileManager(this);
     }

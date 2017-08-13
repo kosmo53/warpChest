@@ -15,22 +15,21 @@ public class CmdExec implements CommandExecutor {
 
         this.config = config;
     }
+
     public boolean onCommand(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player p = (Player) sender;
-            if (args.length < 1){
-            warpPhoneBook.open(p);
-            return true;}
-            else if (args.length > 0 && args[0].equalsIgnoreCase("rl") || args[0].equalsIgnoreCase("reload")){
-                if(p.hasPermission("warpchest.reload")){
-                    //TODO
+            if (args.length < 1) {
+                warpPhoneBook.open(p);
+                return true;
+            } else if (args.length > 0 && args[0].equalsIgnoreCase("rl") || args[0].equalsIgnoreCase("reload")) {
+                if (p.hasPermission("warpchest.reload")) {
+                    Main.getInst().reloadConfig();
                 }
 
-            }
-            else if (args.length > 0 && args[0].equalsIgnoreCase("help")){
+            } else if (args.length > 0 && args[0].equalsIgnoreCase("help")) {
                 if (p.hasPermission("warpchest.chest")) {
                     p.sendMessage(ChatColor.GRAY + "/warpchest");
-
                 }
                 if (p.hasPermission("warpchest.set.enchanted")) {
                     p.sendMessage(ChatColor.GRAY + "/warpchest set enchanted [warp] [true/false]");
@@ -47,20 +46,23 @@ public class CmdExec implements CommandExecutor {
                 if (p.hasPermission("warpchest.reload")) {
                     p.sendMessage(ChatColor.GRAY + "/warpchest reload");
                 }
-                    p.sendMessage(ChatColor.GRAY + "/warpchest help");
+                p.sendMessage(ChatColor.GRAY + "/warpchest help");
             }
-            if (args.length > 0 && args[0].equalsIgnoreCase("set")){
-                if(p.hasPermission("warpchest.set")){
-                    if (args.length > 3 && args[1].equalsIgnoreCase("item")) {
-                        config.set("Items." + args[2] + ".item",args[3]);
-sender.sendMessage("Ustawiono item " + args[3] + " dla teleportu " + args[2]);
+            if (args.length > 0 && args[0].equalsIgnoreCase("set")) {
+                if (p.hasPermission("warpchest.set")) {
+                    if (args[1].equalsIgnoreCase("item")) {
+                        config.set("Items." + args[2] + ".item", args[3]);
+                        sender.sendMessage("Ustawiono item " + args[3] + " dla teleportu " + args[2]);
                     }
 
 
-                } else {sender.sendMessage("Nope, poprosze prawko");}
+                } else {
+                    sender.sendMessage("Nope, poprosze prawko");
+                }
 
             }
 
+        }
+        return false;
     }
-return false;}
 }

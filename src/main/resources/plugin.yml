@@ -1,8 +1,8 @@
 name: warpChest
 main: net.ksm.mcp.Main
-version: 1.0-SNAPSHOT
+version: 1.2
 author: K0SM0
-description: TODO
+description: This plugin is making list of warps of essentials, command /wc
 depend: [Essentials]
 
 commands:
